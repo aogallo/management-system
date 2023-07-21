@@ -5,43 +5,53 @@ const Sidebar = () => {
     <aside className='sidebar'>
       <img className='logo' src='/logo-diana.png' alt='' />
       <ul className='menu'>
-        <li className='menu-item'>
-          <a href='/dashbord'>
+        <li>
+          <Link className='menu-item' to='/dashbord'>
             <span className='material-symbols-outlined'>home</span>
             <span>Dashboard</span>
-          </a>
+          </Link>
         </li>
-        <li className='menu-item'>
-          <a href='/inventory'>
+        <li>
+          <Link className='menu-item' to='/inventory'>
             <span className='material-symbols-outlined'>inventory</span>
             <span>Inventory</span>
-          </a>
+          </Link>
         </li>
-        <li className='menu-item'>
-          <span className='material-symbols-outlined'>summarize</span>
-          <span>Reports</span>
+        <li>
+          <Link className='menu-item' to='/reports'>
+            <span className='material-symbols-outlined'>summarize</span>
+            <span>Reports</span>
+          </Link>
         </li>
-        <li className='menu-item'>
-          <Link to='/users'>
+        <li>
+          <Link className='menu-item' to='/users'>
             <span className='material-symbols-outlined'>account_circle</span>
             <span>Usuarios</span>
           </Link>
         </li>
-        <li className='menu-item'>
-          <span className='material-symbols-outlined'>order_approve</span>
-          <span>Orders</span>
+        <li>
+          <Link className='menu-item' to='/orders'>
+            <span className='material-symbols-outlined'>order_approve</span>
+            <span>Orders</span>
+          </Link>
         </li>
-        <li className='menu-item'>
-          <span className='material-symbols-outlined'>shopping_bag</span>
-          <span>Manage Store</span>
+        <li>
+          <Link className='menu-item' to='/'>
+            <span className='material-symbols-outlined'>shopping_bag</span>
+            <span>Manage Store</span>
+          </Link>
         </li>
-        <li className='menu-item'>
-          <span className='material-symbols-outlined'>settings</span>
-          <span>Settings</span>
+        <li>
+          <Link className='menu-item' to='/'>
+            <span className='material-symbols-outlined'>settings</span>
+            <span>Settings</span>
+          </Link>
         </li>
-        <li className='menu-item'>
-          <span className='material-symbols-outlined'>logout</span>
-          <span>Salir</span>
+        <li>
+          <Link className='menu-item' to='/'>
+            <span className='material-symbols-outlined'>logout</span>
+            <span>Salir</span>
+          </Link>
         </li>
       </ul>
     </aside>

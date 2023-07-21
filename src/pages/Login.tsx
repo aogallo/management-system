@@ -28,7 +28,7 @@ function Login() {
         </Link>
         {/* </div> */}
         <button className='button-primary button-login' type='submit'>
-          Ingresar
+          <span>Ingresar</span>
         </button>
       </form>
     </div>
