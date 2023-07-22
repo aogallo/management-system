@@ -1,6 +1,8 @@
+import Content from '../components/Content'
+
 function Users() {
   return (
-    <div className='content'>
+    <Content>
       <div className='content-actions'>
         <span className='content-title'>Usuarios</span>
         <div className='content-actions__buttons'>
@@ -14,7 +16,7 @@ function Users() {
           {/* <button className='button button-neutral'>Download all</button> */}
         </div>
       </div>
-    </div>
+    </Content>
   )
 }
 

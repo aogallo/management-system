@@ -1,3 +1,6 @@
+import Content from './Content'
+import TitleContent from './TitleContent'
+
 export interface User {
   name: string
   age: number
@@ -10,6 +13,32 @@ export interface Props {
 }
 
 function Table({ data }: Props) {
+  const addProduct = () => {
+    console.log('test function addProduct')
+  }
+
+  const title = 'Suppliers'
+  const actions = [
+    {
+      actionName: 'Add Prodcut',
+      onClick: addProduct,
+      style: 'button-primary',
+      icon: null,
+    },
+    {
+      actionName: 'Filters',
+      onClick: addProduct,
+      style: 'button-neutral',
+      icon: <span className='material-symbols-outlined'>filter_list</span>,
+    },
+    {
+      actionName: 'Download',
+      onClick: addProduct,
+      style: 'button-neutral',
+      icon: <span className='material-symbols-outlined'>filter_list</span>,
+    },
+  ]
+
   const rows = data.map((row) => {
     return (
       <tr className='table-row'>
@@ -26,20 +55,8 @@ function Table({ data }: Props) {
   })
 
   return (
-    <div className='content table-content'>
-      <div className='content-actions'>
-        <span className='content-title'>Suppliers</span>
-        <div className='content-actions__buttons'>
-          <button className='button button-primary'>
-            <span>Add Product</span>
-          </button>
-          <button className='button button-neutral'>
-            <img className='button-icon' src='/filters.svg' alt='' />
-            Filters
-          </button>
-          <button className='button button-neutral'>Download all</button>
-        </div>
-      </div>
+    <Content>
+      <TitleContent title={title} actions={actions} />
       <table className='table'>
         <thead>
           <tr className='table-title'>
@@ -58,7 +75,7 @@ function Table({ data }: Props) {
         <span className='pagination-label'>page 1 of 10</span>
         <button className='button button-neutral'>next</button>
       </section>
-    </div>
+    </Content>
   )
 }
 

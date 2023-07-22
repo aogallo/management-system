@@ -1,6 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
 import Users from '../pages/Users'
 import Table from './Table'
+import Dashboard from '../pages/Dashboard'
+import TratamientPlan from '../pages/TratamientPlan'
+import Reports from '../pages/Reports'
+import Settings from '../pages/Settings'
 
 // type Props = {
 //   children: React.ReactNode
@@ -95,7 +99,10 @@ const Layout = () => {
     <main className='main'>
       <Routes>
         <Route path='/users' element={<Users />} />
-        <Route path='/inventory' element={<Table data={data} />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/tratamient-plan' element={<Table data={data} />} />
+        <Route path='/reports' element={<Reports />} />
+        <Route path='/settings' element={<Settings />} />
       </Routes>
     </main>
   )

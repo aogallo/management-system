@@ -10,7 +10,7 @@ function RequiredAuth({ children }: { children: React.ReactNode }) {
 
 function App() {
   return (
-    <div className='body'>
+    <div className='main-content'>
       <Routes>
         <Route path='/' element={<Login />} />
         <Route
