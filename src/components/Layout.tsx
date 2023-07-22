@@ -5,7 +5,7 @@ import Dashboard from '../pages/Dashboard'
 import TratamientPlan from '../pages/TratamientPlan'
 import Reports from '../pages/Reports'
 import Settings from '../pages/Settings'
-import NoMatchRouteError from '../pages/Error'
+import NoMatchRouteError from '../pages/NoMatchRouteError'
 
 // type Props = {
 //   children: React.ReactNode
