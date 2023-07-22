@@ -3,8 +3,10 @@ import Content from '../components/Content'
 function NoMatchRouteError() {
   return (
     <Content>
-      Error
-      <span>go back</span>
+      <section className='error-content'>
+        <h2>Oops!</h2>
+        <span>go back</span>
+      </section>
     </Content>
   )
 }

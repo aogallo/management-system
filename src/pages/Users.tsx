@@ -1,21 +1,21 @@
 import Content from '../components/Content'
+import TitleContent from '../components/TitleContent'
 
 function Users() {
+  const addProduct = () => {
+    console.log('test')
+  }
+  const actions = [
+    {
+      actionName: 'Add Prodcut',
+      onClick: addProduct,
+      style: 'button-primary',
+      icon: null,
+    },
+  ]
   return (
     <Content>
-      <div className='content-actions'>
-        <span className='content-title'>Usuarios</span>
-        <div className='content-actions__buttons'>
-          <button className='button button-primary'>
-            <span>Agregar usuario </span>
-          </button>
-          {/* <button className='button button-neutral'> */}
-          {/*   <img className='button-icon' src='/filters.svg' alt='' /> */}
-          {/*   Filters */}
-          {/* </button> */}
-          {/* <button className='button button-neutral'>Download all</button> */}
-        </div>
-      </div>
+      <TitleContent title='Usuarios' actions={actions} />
     </Content>
   )
 }
