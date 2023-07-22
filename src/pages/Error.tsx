@@ -1,6 +1,6 @@
 import Content from '../components/Content'
 
-function Error() {
+function NoMatchRouteError() {
   return (
     <Content>
       Error
@@ -9,4 +9,4 @@ function Error() {
   )
 }
 
-export default Error
+export default NoMatchRouteError
