@@ -1,11 +1,11 @@
-import React from 'react'
+import Content from '../components/Content'
 
 function Error() {
   return (
-    <div>
+    <Content>
       Error
       <span>go back</span>
-    </div>
+    </Content>
   )
 }
 

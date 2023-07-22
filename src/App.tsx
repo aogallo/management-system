@@ -10,21 +10,21 @@ function RequiredAuth({ children }: { children: React.ReactNode }) {
 
 function App() {
   return (
-    <div className='body'>
-      <Routes>
-        <Route path='/' element={<Login />} />
-        <Route
-          path='/*'
-          element={
-            <RequiredAuth>
+    <Routes>
+      <Route path='/' element={<Login />} />
+      <Route
+        path='/*'
+        element={
+          <RequiredAuth>
+            <div className='main-content'>
               <Header />
               <Sidebar />
               <Layout />
-            </RequiredAuth>
-          }
-        />
-      </Routes>
-    </div>
+            </div>
+          </RequiredAuth>
+        }
+      />
+    </Routes>
   )
 }
 

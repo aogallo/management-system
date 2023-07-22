@@ -4,8 +4,9 @@ function Login() {
   return (
     <div className='login-container'>
       <form className='login-content'>
-        {/* <div className='form-controls'> */}
-        {/* <div> */}
+        <div className='login-logo'>
+          <img className='logo ' src='/logo-diana.png' alt='' />
+        </div>
         <label className='form-label'>Usuario*</label>
         <input
           className='form-input'
