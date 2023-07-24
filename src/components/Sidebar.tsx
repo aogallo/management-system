@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 const Sidebar = () => {
   return (
     <aside className='sidebar'>
-      <img className='logo' src='/logo-diana.png' alt='' />
+      <Link to='/dashboard'>
+        <img className='logo' src='/logo-diana.png' alt='' />
+      </Link>
       <ul className='menu'>
         <li>
           <Link className='menu-item' to='/dashboard'>
