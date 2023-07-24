@@ -5,6 +5,7 @@ import Dashboard from '../pages/Dashboard'
 import TratamientPlan from '../pages/TratamientPlan'
 import Reports from '../pages/Reports'
 import Settings from '../pages/Settings'
+import NoMatchRouteError from '../pages/NoMatchRouteError'
 
 // type Props = {
 //   children: React.ReactNode
@@ -103,6 +104,7 @@ const Layout = () => {
         <Route path='/tratamient-plan' element={<Table data={data} />} />
         <Route path='/reports' element={<Reports />} />
         <Route path='/settings' element={<Settings />} />
+        <Route path='/*' element={<NoMatchRouteError />} />
       </Routes>
     </main>
   )

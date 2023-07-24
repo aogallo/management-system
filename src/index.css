@@ -371,3 +371,12 @@ ul {
   display: flex;
   justify-content: center;
 }
+
+.error-content {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  align-items: center;
+  flex-direction: column;
+}
