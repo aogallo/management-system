@@ -33,6 +33,15 @@ body {
   font-family: 'Inter', 'Popins', sans-serif;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-inline: 0;
+  margin-block: 0;
+}
+
 .main-content {
   display: grid;
   overflow: clip;
@@ -370,4 +379,36 @@ ul {
   width: 30.25rem;
   display: flex;
   justify-content: center;
+}
+
+.dashboard-content {
+  background-color: var(--grey-grey-50, #f0f1f3);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 100px) 1fr;
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid red;
+  background-color: var(--grey-white);
+  border-radius: 8px;
+  padding: 0;
+  padding: 0.5rem;
+}
+
+.subtitle-medium {
+  color: var(--grey-grey-800, #383e49);
+
+  /* Sub heading/Medium */
+  font-family: Inter;
+  /* font-size: 20px; */
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px; /* 150% */
+}
+
+.summary-appoitment {
+  display: flex;
+  gap: 0.5rem;
 }
