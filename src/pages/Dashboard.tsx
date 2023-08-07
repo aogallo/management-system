@@ -11,18 +11,24 @@ function Dashboard() {
         <section className='summary-appoitment'>
           <div className='summary-item'>
             <span className='material-symbols-outlined'>today</span>
-            <h4>3</h4>
-            <span>pendientes</span>
+            <div className='summary-item__data'>
+              <h4>3</h4>
+              <span>pendientes</span>
+            </div>
           </div>
           <div className='summary-item'>
             <span className='material-symbols-outlined'>event</span>
-            <h4>4</h4>
-            <span>mañana</span>
+            <div className='summary-item__data'>
+              <h4>4</h4>
+              <span>mañana</span>
+            </div>
           </div>
           <div className='summary-item'>
             <span className='material-symbols-outlined'>event_upcoming</span>
-            <h4>43</h4>
-            <span>proxima semana</span>
+            <div className='summary-item__data'>
+              <h4>43</h4>
+              <span>proxima semana</span>
+            </div>
           </div>
         </section>
       </section>
