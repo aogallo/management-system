@@ -55,7 +55,7 @@ function Table({ data }: Props) {
   })
 
   return (
-    <Content>
+    <Content style='table-content'>
       <TitleContent title={title} actions={actions} />
       <table className='table'>
         <thead>
