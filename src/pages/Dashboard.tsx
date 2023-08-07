@@ -35,12 +35,18 @@ function Dashboard() {
       <section className='card'>
         <SubTitle title='Resumen de inventario' />
         <section className='summary-appoitment'>
-          <h4>3</h4>
-          <span>guantes</span>
-          <h4>4</h4>
-          <span>anestesia</span>
-          <h4>43</h4>
-          <span>cafe</span>
+          <div className='summary-item'>
+            <h4>3</h4>
+            <span>guantes</span>
+          </div>
+          <div className='summary-item'>
+            <h4>4</h4>
+            <span>anestesia</span>
+          </div>
+          <div className='summary-item'>
+            <h4>43</h4>
+            <span>cafe</span>
+          </div>
         </section>
       </section>
       <section className='card'>
