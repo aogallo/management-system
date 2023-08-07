@@ -7,9 +7,8 @@ type ActionsType = {
 
 type TitleContentPropsType = {
   title: string
-  actions: ActionsType[]
+  actions: ActionsType[] | []
 }
-
 function TitleContent({ title, actions }: TitleContentPropsType) {
   return (
     <div className='content-actions'>

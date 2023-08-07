@@ -429,3 +429,12 @@ ul {
 .summary-item__data span {
   font-size: 12px;
 }
+
+.error-content {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  align-items: center;
+  flex-direction: column;
+}
