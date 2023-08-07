@@ -1,7 +1,5 @@
 import Content from '../components/Content'
-import { data } from '../components/Layout'
 import SubTitle from '../components/SubTitle'
-import Table from '../components/Table'
 
 function Dashboard() {
   return (
@@ -49,15 +47,15 @@ function Dashboard() {
           </div>
         </section>
       </section>
-      <section className='card'>
-        <SubTitle title='Sales and Purchase' />
-      </section>
-      <section className='card'>
-        <SubTitle title='Product Summary' />
-      </section>
+      {/* <section className='card'> */}
+      {/*   <SubTitle title='Sales and Purchase' /> */}
+      {/* </section> */}
+      {/* <section className='card'> */}
+      {/*   <SubTitle title='Product Summary' /> */}
+      {/* </section> */}
       <section className='card'>
         <SubTitle title='Proximas citas' />
-        <Table data={data} />
+        {/* <Table data={data} /> */}
       </section>
       <section className='card'>
         <SubTitle title='Sales and Purchase' />

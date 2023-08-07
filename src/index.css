@@ -385,7 +385,7 @@ ul {
   background-color: var(--grey-grey-50, #f0f1f3);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 100px) 1fr;
+  grid-template-rows: repeat(1, 100px) 550px;
   gap: 1rem;
 }
 
