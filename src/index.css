@@ -22,6 +22,8 @@
   --grey-grey-800: #383e49;
 
   --title-content: #444;
+
+  --purple: #817af3;
 }
 
 body {
@@ -286,6 +288,10 @@ ul {
   color: var(--error-error-600);
 }
 
+.icon-purple {
+  color: var(--purple);
+}
+
 .table-actions {
   display: flex;
   gap: 1rem;
@@ -390,7 +396,7 @@ ul {
 }
 
 .card {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   background-color: var(--grey-white);
   border-radius: 8px;
   padding: 0;
@@ -412,6 +418,7 @@ ul {
   display: flex;
   gap: 0.5rem;
   justify-content: space-around;
+  color: var(--grey-grey-600);
 }
 
 .summary-item {
