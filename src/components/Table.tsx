@@ -1,21 +1,18 @@
+import { useEffect } from 'react'
+import { CustomerType } from '../types'
 import Content from './Content'
 import TitleContent from './TitleContent'
 
-export interface User {
-  name: string
-  age: number
-  email: string
-  phone: string
-}
 
 export interface Props {
-  data: User[]
+  data: CustomerType[]
 }
 
 function Table({ data }: Props) {
   const addProduct = () => {
     console.log('test function addProduct')
   }
+  useEffect(()=> {console.log(data)},[])
 
   const title = 'Suppliers'
   const actions = [

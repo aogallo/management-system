@@ -20,6 +20,7 @@ function TitleContent({ title, actions }: TitleContentPropsType) {
               <button
                 className={`button ${action.style}`}
                 onClick={action.onClick}
+                key={`${action.actionName}`}
               >
                 {action.icon ? action.icon : null}
                 <span>{action.actionName}</span>
