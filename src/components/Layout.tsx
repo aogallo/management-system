@@ -1,10 +1,11 @@
 import { Route, Routes } from 'react-router-dom'
-import Users from '../pages/Users'
-import Table from './Table'
-import Dashboard from '../pages/Dashboard'
-import Reports from '../pages/Reports'
-import Settings from '../pages/Settings'
-import NoMatchRouteError from '../pages/NoMatchRouteError'
+
+import Users from '@pages/Users'
+import Dashboard from '@pages/Dashboard'
+import Reports from '@pages/Reports'
+import Settings from '@pages/Settings'
+import NoMatchRouteError from '@pages/NoMatchRouteError'
+import TratamientPlan from '@pages/TratamientPlan'
 
 export const data = [
   {
@@ -95,7 +96,7 @@ const Layout = () => {
       <Routes>
         <Route path='/users' element={<Users />} />
         <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/tratamient-plan' element={<Table data={data} />} />
+        <Route path='/tratamient-plan' element={<TratamientPlan />} />
         <Route path='/reports' element={<Reports />} />
         <Route path='/settings' element={<Settings />} />
         <Route path='/*' element={<NoMatchRouteError />} />

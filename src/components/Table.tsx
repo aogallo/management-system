@@ -1,8 +1,4 @@
-import { useEffect } from 'react'
-
 import { CustomerType, UserType } from '@src/types'
-import Content from '@components/Content'
-import TitleContent from '@components/TitleContent'
 
 export interface ColumnsType {
   key: string
@@ -12,12 +8,19 @@ export interface ColumnsType {
 export interface Props {
   data: CustomerType[] | UserType[]
   columns: ColumnsType[]
-  // data: CustomerType[] | UserType[]
+  title: string
 }
 
-function Table({ data, columns }: Props) {
+function Table({ title, data, columns }: Props) {
   const rowKeys = columns.map((column) => column.key)
-  const title = 'Suppliers'
+
+  const editProduct = () => {
+    console.log('editing the product')
+  }
+
+  const deleteProduct = () => {
+    console.log('deleting a product')
+  }
 
   const addProduct = () => {
     console.log('test function addProduct')
@@ -49,14 +52,27 @@ function Table({ data, columns }: Props) {
       <tr className='table-row' key={element.id}>
         {rowKeys.map((row) =>
           row === 'actions' ? (
-            <td className='table-row__content table-actions'>
-              <span className='material-symbols-outlined icon-info'>edit</span>
-              <span className='material-symbols-outlined icon-error'>
+            <td
+              key={`${row}-action`}
+              className='table-row__content table-actions'
+            >
+              <span
+                className='material-symbols-outlined icon-info'
+                onClick={editProduct}
+              >
+                edit
+              </span>
+              <span
+                className='material-symbols-outlined icon-error'
+                onClick={deleteProduct}
+              >
                 delete
               </span>
             </td>
           ) : (
-            <td className='table-row__content'>{element[row]}</td>
+            <td key={row} className='table-row__content'>
+              {element[row]}
+            </td>
           ),
         )}
       </tr>
@@ -64,8 +80,7 @@ function Table({ data, columns }: Props) {
   })
 
   return (
-    <Content style='table-content'>
-      <TitleContent title={title} actions={actions} />
+    <>
       <table className='table'>
         <thead>
           <tr className='table-title'>
@@ -82,7 +97,7 @@ function Table({ data, columns }: Props) {
         <span className='pagination-label'>page 1 of 10</span>
         <button className='button button-neutral'>next</button>
       </section>
-    </Content>
+    </>
   )
 }
 
