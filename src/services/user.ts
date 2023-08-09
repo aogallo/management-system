@@ -1,13 +1,9 @@
 import { ErrorType, UserType } from '@src/types'
 
-export const getUser = async (
-  id?: string,
-): Promise<Array<UserType> | ErrorType> => {
-  const baseUrl = import.meta.env.VITE_API
+const baseUrl = `${import.meta.env.VITE_API}/user`
 
-  const URL = `${baseUrl as string}/user/${id as string}`
-
-  return await fetch(URL)
+export const getUsers = async (): Promise<Array<UserType> | ErrorType> => {
+  return await fetch(baseUrl)
     .then((response) => {
       if (!response.ok) throw new Error('error para obtener datos')
       return response.json()
@@ -21,4 +17,18 @@ export const getUser = async (
         return jsonData.error
       }
     })
+}
+
+export const deleteUser = async (id: string) => {
+  const URL = `${baseUrl}/${id}`
+
+  return await fetch(URL, {
+    method: 'DELETE',
+  }).then((response) => {
+    if (response.ok) {
+      console.log('eliminado')
+    }
+
+    if (!response.ok) throw new Error('error al eliminar usuario')
+  })
 }

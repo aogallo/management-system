@@ -77,7 +77,9 @@ function Table({ data, isLoading, columns }: Props) {
             ))}
           </tr>
         </thead>
-        <tbody>{isLoading ? skeleton : rows}</tbody>
+        <tbody>
+          {isLoading ? <tr className='table-row'>{skeleton}</tr> : rows}
+        </tbody>
       </table>
 
       <section className='pagination'>

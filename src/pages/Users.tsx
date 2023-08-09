@@ -1,21 +1,13 @@
 import Content from '@components/Content'
 import TitleContent from '@components/TitleContent'
-import { getUser } from '@services/user'
-
-import { ErrorType, UserType } from '@src/types'
 import Table from '@components/Table'
-import { useQuery } from '@tanstack/react-query'
+
+import { UserType } from '@src/types'
+
+import { useRetrieveUser } from '@hooks/useUser'
 
 function Users() {
-  const {
-    isLoading,
-    isError,
-    data: user,
-  } = useQuery<UserType[], ErrorType>({
-    queryKey: ['/api/user'],
-    queryFn: () => getUser('1'),
-  })
-
+  const { isLoading, isError, user } = useRetrieveUser()
   const addProduct = () => {
     console.log('test')
   }
