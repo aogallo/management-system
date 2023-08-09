@@ -23,10 +23,6 @@ function Table({ data, isLoading, columns }: Props) {
     console.log('deleting a product')
   }
 
-  const addProduct = () => {
-    console.log('test function addProduct')
-  }
-
   const rows =
     !isLoading &&
     data.map((element) => {
@@ -78,7 +74,17 @@ function Table({ data, isLoading, columns }: Props) {
           </tr>
         </thead>
         <tbody>
-          {isLoading ? <tr className='table-row'>{skeleton}</tr> : rows}
+          {isLoading ? (
+            <tr className='table-row'>{skeleton}</tr>
+          ) : data.length > 0 ? (
+            rows
+          ) : (
+            <tr className='table-row'>
+              <td colSpan={columns.length} className='table-row__nodata'>
+                No hay datos que mostrar
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
 

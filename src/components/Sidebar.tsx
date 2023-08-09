@@ -31,6 +31,12 @@ const Sidebar = () => {
             <span>Reportes</span>
           </Link>
         </li>
+        <li>
+          <Link className='menu-item ' to='/customers'>
+            <span className='material-symbols-outlined'>group</span>
+            <span>Clientes</span>
+          </Link>
+        </li>
         {/* <li> */}
         {/*   <Link className='menu-item' to='/orders'> */}
         {/*     <span className='material-symbols-outlined'>order_approve</span> */}
