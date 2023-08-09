@@ -3,7 +3,7 @@ import { ErrorType, UserType } from '@src/types'
 export const getUser = async (
   id?: string,
 ): Promise<Array<UserType> | ErrorType> => {
-  const baseUrl = import.meta.env.VITE_SOME_KEY as unknown
+  const baseUrl = import.meta.env.VITE_API as unknown
   let URL = ''
 
   if (id !== '') {
