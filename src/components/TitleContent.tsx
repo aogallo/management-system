@@ -16,16 +16,14 @@ function TitleContent({ title, actions }: TitleContentPropsType) {
       <div className='content-actions__buttons'>
         {actions.map((action) => {
           return (
-            <>
-              <button
-                className={`button ${action.style}`}
-                onClick={action.onClick}
-                key={`${action.actionName}`}
-              >
-                {action.icon ? action.icon : null}
-                <span>{action.actionName}</span>
-              </button>
-            </>
+            <button
+              className={`button ${action.style}`}
+              onClick={action.onClick}
+              key={`${action.actionName}`}
+            >
+              {action.icon ? action.icon : null}
+              <span>{action.actionName}</span>
+            </button>
           )
         })}
       </div>

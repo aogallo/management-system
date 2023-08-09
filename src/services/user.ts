@@ -9,6 +9,7 @@ export const getUser = async (
   if (id !== '') {
     URL = `${baseUrl as string}/customer/${id as string}`
   }
+
   URL = `${baseUrl as string}/customer`
 
   return await fetch(URL)

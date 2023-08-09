@@ -6,15 +6,14 @@ import { getUser } from '@services/user'
 
 import { CustomerType, ErrorType } from '@types'
 import Table from '@components/Table'
+import { useQuery } from '@tanstack/react-query'
+import { UserType } from '@src/types'
 
 function Users() {
-  const [user, setUser] = useState<Array<CustomerType> | ErrorType>([])
-
-  useEffect(() => {
-    getUser()
-      .then((data) => setUser(data))
-      .catch((error) => console.log(error))
-  }, [])
+  const { isLoading, data: user } = useQuery<UserType[], ErrorType>({
+    queryKey: ['/api/user'],
+    queryFn: () => getUser('1'),
+  })
 
   const addProduct = () => {
     console.log('test')
@@ -32,7 +31,8 @@ function Users() {
   return (
     <Content>
       <TitleContent title='Usuarios' actions={actions} />
-      <Table data={user as Array<CustomerType>} />
+      {isLoading ?? <h2>Cargando</h2>}
+      {/* <Table data={user as Array<CustomerType>} /> */}
     </Content>
   )
 }
