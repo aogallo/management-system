@@ -3,14 +3,9 @@ import { ErrorType, UserType } from '@src/types'
 export const getUser = async (
   id?: string,
 ): Promise<Array<UserType> | ErrorType> => {
-  const baseUrl = import.meta.env.VITE_API as unknown
-  let URL = ''
+  const baseUrl = import.meta.env.VITE_API
 
-  if (id !== '') {
-    URL = `${baseUrl as string}/user/${id as string}`
-  }
-
-  URL = `${baseUrl as string}/user`
+  const URL = `${baseUrl as string}/user/${id as string}`
 
   return await fetch(URL)
     .then((response) => {
