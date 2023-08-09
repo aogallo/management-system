@@ -1,14 +1,10 @@
-type ActionsType = {
-  actionName: string
-  onClick: () => void
-  style: string
-  icon: JSX.Element | null
-}
+import { ActionsType } from '@src/types'
 
 type TitleContentPropsType = {
   title: string
   actions?: ActionsType[] | []
 }
+
 function TitleContent({ title, actions }: TitleContentPropsType) {
   return (
     <div className='content-actions'>

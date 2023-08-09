@@ -37,8 +37,7 @@ function Users() {
     <Content style='table-content'>
       <TitleContent title='Usuarios' actions={actions} />
       {isLoading ?? <h2>Cargando</h2>}
-      {/* {(!isLoading && !isError) ?? <Table data={user as Array<CustomerType>} />} */}
-      {!isLoading && !isError ? (
+      {!isLoading && !isError && (
         <Table
           title='Usuarios'
           data={user as UserType[]}
@@ -61,8 +60,6 @@ function Users() {
             },
           ]}
         />
-      ) : (
-        <p>No hay datos</p>
       )}
     </Content>
   )

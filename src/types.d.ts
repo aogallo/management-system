@@ -33,3 +33,10 @@ export interface ApiResponseType {
   data?: Array<UserType>
   error?: string | Array<ErrorType>
 }
+
+export interface ActionsType {
+  actionName: string
+  onClick: () => void
+  style: string
+  icon: JSX.Element | null
+}
