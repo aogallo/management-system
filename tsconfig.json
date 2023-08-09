@@ -35,6 +35,9 @@
       "@routes/*": [
         "./src/routes/*"
       ],
+      "@services/*": [
+        "./src/services/*"
+      ],
       "@src/*": [
         "./src/*"
       ]

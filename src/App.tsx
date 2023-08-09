@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import Header from '.@components/Header'
-import Layout from '.@components/Layout'
+import Header from '@components/Header'
+import Layout from '@components/Layout'
 import Sidebar from '@components/Sidebar'
 import Login from '@pages/Login'
 

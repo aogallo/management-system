@@ -1,4 +1,4 @@
-import Content from '../components/Content'
+import Content from '@components/Content'
 
 function Settings() {
   return <Content>Settings</Content>

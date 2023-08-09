@@ -1,4 +1,4 @@
-import { CustomerType, ErrorType } from '../types'
+import { CustomerType, ErrorType } from '@src/types'
 
 export const getUser = async (
   id?: string,
