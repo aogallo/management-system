@@ -12,6 +12,9 @@ export const getUser = async (
   URL = `${baseUrl as string}/customer`
 
   return await fetch(URL)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) throw new Error('error para obtener datos')
+      return response.json()
+    })
     .catch((error) => console.log('error', error))
 }
