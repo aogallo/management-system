@@ -8,10 +8,11 @@ export interface ColumnsType {
 export interface Props {
   data: CustomerType[] | UserType[]
   columns: ColumnsType[]
-  title: string
+  isLoading: boolean
+  isError: boolean
 }
 
-function Table({ title, data, columns }: Props) {
+function Table({ data, isLoading, columns }: Props) {
   const rowKeys = columns.map((column) => column.key)
 
   const editProduct = () => {
@@ -26,58 +27,45 @@ function Table({ title, data, columns }: Props) {
     console.log('test function addProduct')
   }
 
-  const actions = [
-    {
-      actionName: 'Add Prodcut',
-      onClick: addProduct,
-      style: 'button-primary',
-      icon: null,
-    },
-    {
-      actionName: 'Filters',
-      onClick: addProduct,
-      style: 'button-neutral',
-      icon: <span className='material-symbols-outlined'>filter_list</span>,
-    },
-    {
-      actionName: 'Download',
-      onClick: addProduct,
-      style: 'button-neutral',
-      icon: <span className='material-symbols-outlined'>filter_list</span>,
-    },
-  ]
+  const rows =
+    !isLoading &&
+    data.map((element) => {
+      return (
+        <tr className='table-row' key={element.id}>
+          {rowKeys.map((row) =>
+            row === 'actions' ? (
+              <td
+                key={`${row}-action`}
+                className='table-row__content table-actions'
+              >
+                <span
+                  className='material-symbols-outlined icon-info'
+                  onClick={editProduct}
+                >
+                  edit
+                </span>
+                <span
+                  className='material-symbols-outlined icon-error'
+                  onClick={deleteProduct}
+                >
+                  delete
+                </span>
+              </td>
+            ) : (
+              <td key={row} className='table-row__content'>
+                {element[row]}
+              </td>
+            ),
+          )}
+        </tr>
+      )
+    })
 
-  const rows = data.map((element) => {
-    return (
-      <tr className='table-row' key={element.id}>
-        {rowKeys.map((row) =>
-          row === 'actions' ? (
-            <td
-              key={`${row}-action`}
-              className='table-row__content table-actions'
-            >
-              <span
-                className='material-symbols-outlined icon-info'
-                onClick={editProduct}
-              >
-                edit
-              </span>
-              <span
-                className='material-symbols-outlined icon-error'
-                onClick={deleteProduct}
-              >
-                delete
-              </span>
-            </td>
-          ) : (
-            <td key={row} className='table-row__content'>
-              {element[row]}
-            </td>
-          ),
-        )}
-      </tr>
-    )
-  })
+  const skeleton = columns.map((colum) => (
+    <td key={colum.label} className='table-row__content loading'>
+      <div className='bar'></div>
+    </td>
+  ))
 
   return (
     <>
@@ -89,7 +77,7 @@ function Table({ title, data, columns }: Props) {
             ))}
           </tr>
         </thead>
-        <tbody>{rows}</tbody>
+        <tbody>{isLoading ? skeleton : rows}</tbody>
       </table>
 
       <section className='pagination'>

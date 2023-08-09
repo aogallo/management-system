@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 import Content from '@components/Content'
 import TitleContent from '@components/TitleContent'
 import { getUser } from '@services/user'
@@ -31,36 +29,32 @@ function Users() {
     },
   ]
 
-  console.log(!isLoading && !isError)
-
   return (
     <Content style='table-content'>
       <TitleContent title='Usuarios' actions={actions} />
-      {isLoading ?? <h2>Cargando</h2>}
-      {!isLoading && !isError && (
-        <Table
-          title='Usuarios'
-          data={user as UserType[]}
-          columns={[
-            {
-              key: 'name',
-              label: 'Nombre',
-            },
-            {
-              key: 'username',
-              label: 'Usuario',
-            },
-            {
-              key: 'email',
-              label: 'Correo',
-            },
-            {
-              key: 'actions',
-              label: 'Acciones',
-            },
-          ]}
-        />
-      )}
+      <Table
+        isLoading={isLoading}
+        isError={isError}
+        data={user as UserType[]}
+        columns={[
+          {
+            key: 'name',
+            label: 'Nombre',
+          },
+          {
+            key: 'username',
+            label: 'Usuario',
+          },
+          {
+            key: 'email',
+            label: 'Correo',
+          },
+          {
+            key: 'actions',
+            label: 'Acciones',
+          },
+        ]}
+      />
     </Content>
   )
 }
