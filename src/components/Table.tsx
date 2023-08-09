@@ -1,18 +1,28 @@
 import { useEffect } from 'react'
-import { CustomerType } from '../types'
-import Content from './Content'
-import TitleContent from './TitleContent'
 
+import { CustomerType, UserType } from '@src/types'
+import Content from '@components/Content'
+import TitleContent from '@components/TitleContent'
 
-export interface Props {
-  data: CustomerType[]
+export interface ColumnsType {
+  key: string
+  label: string
 }
 
-function Table({ data }: Props) {
+export interface Props {
+  data: CustomerType[] | UserType[]
+  columns: ColumnsType[]
+  // data: CustomerType[] | UserType[]
+}
+
+function Table({ data, columns }: Props) {
+  const rowKeys = columns.map((column) => column.key)
   const addProduct = () => {
     console.log('test function addProduct')
   }
-  useEffect(()=> {console.log(data)},[])
+  useEffect(() => {
+    console.log(data)
+  }, [])
 
   const title = 'Suppliers'
   const actions = [
@@ -36,17 +46,21 @@ function Table({ data }: Props) {
     },
   ]
 
-  const rows = data.map((row) => {
+  const rows = data.map((element) => {
     return (
-      <tr className='table-row'>
-        <td className='table-row__content'>{row.name}</td>
-        <td className='table-row__content'>{row.age}</td>
-        <td className='table-row__content'>{row.phone}</td>
-        <td className='table-row__content'>{row.email.toLowerCase()}</td>
-        <td className='table-row__content table-actions'>
-          <span className='material-symbols-outlined icon-info'>edit</span>
-          <span className='material-symbols-outlined icon-error'>delete</span>
-        </td>
+      <tr className='table-row' key={element.id}>
+        {rowKeys.map((row) =>
+          row === 'actions' ? (
+            <td className='table-row__content table-actions'>
+              <span className='material-symbols-outlined icon-info'>edit</span>
+              <span className='material-symbols-outlined icon-error'>
+                delete
+              </span>
+            </td>
+          ) : (
+            <td className='table-row__content'>{element[row]}</td>
+          ),
+        )}
       </tr>
     )
   })
@@ -57,11 +71,9 @@ function Table({ data }: Props) {
       <table className='table'>
         <thead>
           <tr className='table-title'>
-            <th>nombre del paciente</th>
-            <th>edad</th>
-            <th>teléfono</th>
-            <th>email</th>
-            <th>acciones</th>
+            {columns.map((column) => (
+              <th key={column.key}>{column.label}</th>
+            ))}
           </tr>
         </thead>
         <tbody>{rows}</tbody>

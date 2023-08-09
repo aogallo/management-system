@@ -4,13 +4,16 @@ import Content from '@components/Content'
 import TitleContent from '@components/TitleContent'
 import { getUser } from '@services/user'
 
-import { CustomerType, ErrorType } from '@types'
+import { ErrorType, UserType } from '@src/types'
 import Table from '@components/Table'
 import { useQuery } from '@tanstack/react-query'
-import { UserType } from '@src/types'
 
 function Users() {
-  const { isLoading, data: user } = useQuery<UserType[], ErrorType>({
+  const {
+    isLoading,
+    isError,
+    data: user,
+  } = useQuery<UserType[], ErrorType>({
     queryKey: ['/api/user'],
     queryFn: () => getUser('1'),
   })
@@ -28,11 +31,34 @@ function Users() {
     },
   ]
 
+  console.log(!isLoading && !isError)
+
   return (
     <Content>
       <TitleContent title='Usuarios' actions={actions} />
       {isLoading ?? <h2>Cargando</h2>}
-      {/* <Table data={user as Array<CustomerType>} /> */}
+      {/* {(!isLoading && !isError) ?? <Table data={user as Array<CustomerType>} />} */}
+      {!isLoading && !isError ? (
+        <Table
+          data={user as UserType[]}
+          columns={[
+            {
+              key: 'name',
+              label: 'Nombre',
+            },
+            {
+              key: 'email',
+              label: 'Correo',
+            },
+            {
+              key: 'actions',
+              label: 'Acciones',
+            },
+          ]}
+        />
+      ) : (
+        <p>No hay datos</p>
+      )}
     </Content>
   )
 }

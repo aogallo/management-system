@@ -4,6 +4,7 @@ export interface RoleType {
 }
 
 export interface CustomerType {
+  id: string
   name: string
   age: number
   email: string
