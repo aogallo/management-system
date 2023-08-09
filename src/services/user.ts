@@ -17,6 +17,13 @@ export const getUser = async (
       if (!response.ok) throw new Error('error para obtener datos')
       return response.json()
     })
-    .then((jsonData) => jsonData.data)
-  // .catch((error) => console.log('error', error))
+    .then((jsonData) => {
+      if (jsonData.success) {
+        return jsonData.data
+      }
+
+      if (!jsonData.success) {
+        return jsonData.error
+      }
+    })
 }
