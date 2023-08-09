@@ -282,14 +282,17 @@ ul {
 
 .icon-info {
   color: var(--primary-primary-600);
+  cursor: pointer;
 }
 
 .icon-error {
   color: var(--error-error-600);
+  cursor: pointer;
 }
 
 .icon-purple {
   color: var(--purple);
+  cursor: pointer;
 }
 
 .table-actions {

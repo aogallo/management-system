@@ -17,14 +17,12 @@ export interface Props {
 
 function Table({ data, columns }: Props) {
   const rowKeys = columns.map((column) => column.key)
+  const title = 'Suppliers'
+
   const addProduct = () => {
     console.log('test function addProduct')
   }
-  useEffect(() => {
-    console.log(data)
-  }, [])
 
-  const title = 'Suppliers'
   const actions = [
     {
       actionName: 'Add Prodcut',
