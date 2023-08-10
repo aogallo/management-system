@@ -285,6 +285,10 @@ ul {
   cursor: pointer;
 }
 
+.icon-info:hover {
+  color: var(--grey-grey-100);
+}
+
 .icon-error {
   color: var(--error-error-600);
   cursor: pointer;

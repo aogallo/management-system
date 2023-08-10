@@ -1,11 +1,11 @@
-import { CustomerType, ErrorType } from '@src/types'
+import { CustomerType } from '@src/types'
 
-const baseUrl = import.meta.env.VITE_SOME_KEY
+const baseUrl = `${import.meta.env.VITE_API}/customer`
 
 export const getCustomer = async (
-  id?: string,
-): Promise<Array<CustomerType> | ErrorType> => {
-  const URL = `${baseUrl as string}/customer/${id}`
+  id?: string = '',
+): Promise<Array<CustomerType>> => {
+  const URL = `${baseUrl}/${id}`
 
   return await fetch(URL)
     .then((response) => {

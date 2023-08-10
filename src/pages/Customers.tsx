@@ -1,6 +1,8 @@
 import Content from '@components/Content'
 import Table, { ColumnsType } from '@components/Table'
 import TitleContent from '@components/TitleContent'
+import { useRetrieveCustomer } from '@hooks/useCustomer'
+import { CustomerType } from '@src/types'
 
 const columns: ColumnsType[] = [
   {
@@ -26,10 +28,17 @@ const columns: ColumnsType[] = [
 ]
 
 const Customers = () => {
+  const { isLoading, isError, customers } = useRetrieveCustomer()
+
   return (
     <Content style='table-content'>
       <TitleContent title='Clientes' />
-      <Table columns={columns} isLoading={false} isError={false} data={[]} />
+      <Table
+        columns={columns}
+        isLoading={isLoading}
+        isError={isError}
+        data={customers as CustomerType[]}
+      />
     </Content>
   )
 }
