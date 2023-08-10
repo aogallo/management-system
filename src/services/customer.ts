@@ -9,7 +9,7 @@ export const getCustomer = async (id = '') => {
 
   if (!response.ok) return 'error para obtener datos'
 
-  const customers = await response.json()
+  const customers = (await response.json()) as ResponseAPI
 
   if (customers.success) {
     return customers.data
