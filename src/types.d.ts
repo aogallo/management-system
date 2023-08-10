@@ -40,3 +40,9 @@ export interface ActionsType {
   style: string
   icon: JSX.Element | null
 }
+
+export interface ResponseAPI {
+  success: boolean
+  data?: CustomerType | CustomerType[] | UserType | UserType[]
+  error?: ErrorType | string
+}

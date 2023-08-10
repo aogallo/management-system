@@ -1,16 +1,19 @@
-import { CustomerType } from '@src/types'
+import { ResponseAPI } from '@src/types'
 
 const baseUrl = `${import.meta.env.VITE_API}/customer`
 
-export const getCustomer = async (
-  id?: string = '',
-): Promise<Array<CustomerType>> => {
+export const getCustomer = async (id = '') => {
   const URL = `${baseUrl}/${id}`
 
-  return await fetch(URL)
-    .then((response) => {
-      if (!response.ok) throw new Error('error para obtener datos')
-      return response.json()
-    })
-    .then((jsonData) => jsonData.data)
+  const response = await fetch(URL)
+
+  if (!response.ok) return 'error para obtener datos'
+
+  const customers = await response.json()
+
+  if (customers.success) {
+    return customers.data
+  }
+
+  return customers.error
 }
