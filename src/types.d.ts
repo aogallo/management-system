@@ -46,3 +46,8 @@ export interface ResponseAPI {
   data?: CustomerType | CustomerType[] | UserType | UserType[]
   error?: ErrorType | string
 }
+
+export interface LoginType {
+  username: string
+  password: string
+}

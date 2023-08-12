@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 
+import { LoginType } from '@src/types'
+
 function Login() {
   return (
     <div className='login-container'>
