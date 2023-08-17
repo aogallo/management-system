@@ -1,11 +1,19 @@
+import { useFormInput } from '@hooks/useFormInput'
 import { Link } from 'react-router-dom'
 
-import { LoginType } from '@src/types'
-
 function Login() {
+  const username = useFormInput('')
+  const password = useFormInput('')
+
+  const handleLogin = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    console.log(e.target)
+    console.log('login')
+  }
+
   return (
     <div className='login-container'>
-      <form className='login-content'>
+      <form className='login-content' onSubmit={handleLogin}>
         <div className='login-logo'>
           <img className='logo ' src='/logo-diana.png' alt='' />
         </div>
@@ -16,6 +24,7 @@ function Login() {
           name='user'
           id='user'
           placeholder='Ingrese su usuario'
+          {...username}
         />
 
         <label className='form-label'>Contraseña*</label>
@@ -24,7 +33,8 @@ function Login() {
           type='password'
           name='password'
           id='password'
-          placeholder='Ingrese su password'
+          placeholder='Ingrese su contraseña'
+          {...password}
         />
         <Link className='form-label__information' to='reset-password'>
           Olvidaste tu contraseña
