@@ -1,14 +1,52 @@
 import { useFormInput } from '@hooks/useFormInput'
-import { Link } from 'react-router-dom'
+import { logIn } from '@services/login'
+import { UserLoggedType } from '@src/types'
+import { useMutation } from '@tanstack/react-query'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
   const username = useFormInput('')
   const password = useFormInput('')
+  const navigate = useNavigate()
+  const [message, setMessage] = useState('')
+  const [error, setError] = useState(false)
+  const { mutateAsync } = useMutation(logIn)
 
-  const handleLogin = (e: React.SyntheticEvent) => {
+  const handleLogin = async (e: React.SyntheticEvent) => {
     e.preventDefault()
-    console.log(e.target)
-    console.log('login')
+    try {
+      const data = await mutateAsync({
+        username: username.value,
+        password: password.value,
+      })
+
+      console.log(data)
+
+      if (!data?.success && data?.error) {
+        setError(true)
+        if (typeof data.error !== 'string') {
+          console.log('array error')
+          data?.error.map((error) =>
+            setMessage((prev) => error.message.concat('.\n', prev)),
+          )
+        }
+        if (typeof data.error === 'string') {
+          console.log('string error')
+          setMessage(data?.error)
+        }
+      }
+
+      if (data?.success) {
+        setError(false)
+        setMessage('Logueado')
+        const login = data.data as UserLoggedType
+        window.localStorage.setItem('user', login.token)
+        navigate('/dashboard')
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -39,7 +77,9 @@ function Login() {
         <Link className='form-label__information' to='reset-password'>
           Olvidaste tu contraseña
         </Link>
-        {/* </div> */}
+        {message && (
+          <p className={error ? 'alert-error' : 'alert-info'}>{message}</p>
+        )}
         <button className='button-primary button-login' type='submit'>
           <span>Ingresar</span>
         </button>

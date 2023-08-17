@@ -43,11 +43,17 @@ export interface ActionsType {
 
 export interface ResponseAPI {
   success: boolean
-  data?: CustomerType | CustomerType[] | UserType | UserType[]
-  error?: ErrorType | string
+  data?: CustomerType | CustomerType[] | UserType | UserType[] | UserLoggedType
+  error?: ErrorType[] | string
 }
 
 export interface LoginType {
   username: string
   password: string
+}
+
+export interface UserLoggedType {
+  token: string
+  username: string
+  name: string
 }

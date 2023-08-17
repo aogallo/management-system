@@ -289,6 +289,14 @@ ul {
   color: var(--grey-grey-100);
 }
 
+.alert-info {
+  color: var(--primary-primary-600);
+}
+
+.alert-error {
+  color: var(--error-error-600);
+}
+
 .icon-error {
   color: var(--error-error-600);
   cursor: pointer;
