@@ -5,14 +5,9 @@ import Header from '@components/Header'
 import Layout from '@components/Layout'
 import Sidebar from '@components/Sidebar'
 import Login from '@pages/Login'
+import RequiredAuth from '@components/RequiredAuth'
 
 const queryClient = new QueryClient()
-
-function RequiredAuth({ children }: { children: React.ReactNode }) {
-  const token = window.localStorage.getItem('user')
-  console.log(token)
-  return token ? children : <Navigate to='/login' />
-}
 
 function App() {
   return (
