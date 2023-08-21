@@ -18,16 +18,17 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Routes>
-        <Route path='/' element={<Layout />}></Route>
-        <Route path='login' element={<Login />} />
-        <Route element={<RequiredAuth />}>
-          <Route path='/users' element={<Users />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/tratamient-plan' element={<TratamientPlan />} />
-          <Route path='/reports' element={<Reports />} />
-          <Route path='/settings' element={<Settings />} />
-          <Route path='/customers' element={<Customers />} />
-          <Route path='/*' element={<NoMatchRouteError />} />
+        <Route path='/' element={<Layout />}>
+          <Route path='login' element={<Login />} />
+          <Route element={<RequiredAuth />}>
+            <Route path='/users' element={<Users />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/tratamient-plan' element={<TratamientPlan />} />
+            <Route path='/reports' element={<Reports />} />
+            <Route path='/settings' element={<Settings />} />
+            <Route path='/customers' element={<Customers />} />
+            <Route path='/*' element={<NoMatchRouteError />} />
+          </Route>
         </Route>
       </Routes>
     </QueryClientProvider>
