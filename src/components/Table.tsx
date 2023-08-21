@@ -1,73 +1,91 @@
-import Content from './Content'
-import TitleContent from './TitleContent'
+import { CustomerType, UserType } from '@src/types'
 
-export interface User {
-  name: string
-  age: number
-  email: string
-  phone: string
+export interface ColumnsType {
+  key: string
+  label: string
 }
 
 export interface Props {
-  data: User[]
+  data: CustomerType[] | UserType[]
+  columns: ColumnsType[]
+  isLoading: boolean
+  isError: boolean
 }
 
-function Table({ data }: Props) {
-  const addProduct = () => {
-    console.log('test function addProduct')
+function Table({ data, isLoading, columns }: Props) {
+  const rowKeys = columns.map((column) => column.key)
+
+  const editProduct = () => {
+    console.log('editing the product')
   }
 
-  const title = 'Suppliers'
-  const actions = [
-    {
-      actionName: 'Add Prodcut',
-      onClick: addProduct,
-      style: 'button-primary',
-      icon: null,
-    },
-    {
-      actionName: 'Filters',
-      onClick: addProduct,
-      style: 'button-neutral',
-      icon: <span className='material-symbols-outlined'>filter_list</span>,
-    },
-    {
-      actionName: 'Download',
-      onClick: addProduct,
-      style: 'button-neutral',
-      icon: <span className='material-symbols-outlined'>filter_list</span>,
-    },
-  ]
+  const deleteProduct = () => {
+    console.log('deleting a product')
+  }
 
-  const rows = data.map((row) => {
-    return (
-      <tr className='table-row'>
-        <td className='table-row__content'>{row.name}</td>
-        <td className='table-row__content'>{row.age}</td>
-        <td className='table-row__content'>{row.phone}</td>
-        <td className='table-row__content'>{row.email.toLowerCase()}</td>
-        <td className='table-row__content table-actions'>
-          <span className='material-symbols-outlined icon-info'>edit</span>
-          <span className='material-symbols-outlined icon-error'>delete</span>
-        </td>
-      </tr>
-    )
-  })
+  const rows =
+    !isLoading &&
+    data.map((element) => {
+      return (
+        <tr className='table-row' key={element.id}>
+          {rowKeys.map((row) =>
+            row === 'actions' ? (
+              <td
+                key={`${row}-action`}
+                className='table-row__content table-actions'
+              >
+                <span
+                  className='material-symbols-outlined icon-info'
+                  onClick={editProduct}
+                >
+                  edit
+                </span>
+                <span
+                  className='material-symbols-outlined icon-error'
+                  onClick={deleteProduct}
+                >
+                  delete
+                </span>
+              </td>
+            ) : (
+              <td key={row} className='table-row__content'>
+                {element[row]}
+              </td>
+            ),
+          )}
+        </tr>
+      )
+    })
+
+  const skeleton = columns.map((colum) => (
+    <td key={colum.label} className='table-row__content loading'>
+      <div className='bar'></div>
+    </td>
+  ))
 
   return (
-    <Content style='table-content'>
-      <TitleContent title={title} actions={actions} />
+    <>
       <table className='table'>
         <thead>
           <tr className='table-title'>
-            <th>nombre del paciente</th>
-            <th>edad</th>
-            <th>teléfono</th>
-            <th>email</th>
-            <th>acciones</th>
+            {columns.map((column) => (
+              <th key={column.key}>{column.label}</th>
+            ))}
           </tr>
         </thead>
-        <tbody>{rows}</tbody>
+        <tbody>
+          {isLoading ? (
+            <tr className='table-row'>{skeleton}</tr>
+          ) : data.length > 0 ? (
+            rows
+          ) : (
+            <tr className='table-row'>
+              <td colSpan={columns.length} className='table-row__nodata'>
+                No hay datos que mostrar
+              </td>
+            </tr>
+          )}
+        </tbody>
       </table>
 
       <section className='pagination'>
@@ -75,7 +93,7 @@ function Table({ data }: Props) {
         <span className='pagination-label'>page 1 of 10</span>
         <button className='button button-neutral'>next</button>
       </section>
-    </Content>
+    </>
   )
 }
 

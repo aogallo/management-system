@@ -282,14 +282,29 @@ ul {
 
 .icon-info {
   color: var(--primary-primary-600);
+  cursor: pointer;
+}
+
+.icon-info:hover {
+  color: var(--grey-grey-100);
+}
+
+.alert-info {
+  color: var(--primary-primary-600);
+}
+
+.alert-error {
+  color: var(--error-error-600);
 }
 
 .icon-error {
   color: var(--error-error-600);
+  cursor: pointer;
 }
 
 .icon-purple {
   color: var(--purple);
+  cursor: pointer;
 }
 
 .table-actions {
@@ -444,4 +459,55 @@ ul {
   margin-bottom: auto;
   align-items: center;
   flex-direction: column;
+}
+
+/* SKELETON */
+@keyframes loading {
+  40% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.loading {
+  position: relative;
+}
+
+.bar {
+  background-color: #e7e7e7;
+  height: 14px;
+  border-radius: 7px;
+  width: 80%;
+}
+
+.loading:after {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 0;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 24px;
+  background-image: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  background-size: 200px 24px;
+  background-position: -100px 0;
+  background-repeat: no-repeat;
+  animation: loading 1s infinite;
+}
+
+.table-row__nodata {
+  color: var(--grey-grey-200);
+  font-style: italic;
+  padding-top: 0.5rem;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.5rem;
 }

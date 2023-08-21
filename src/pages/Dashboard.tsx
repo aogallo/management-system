@@ -1,5 +1,5 @@
-import Content from '../components/Content'
-import SubTitle from '../components/SubTitle'
+import Content from '@components/Content'
+import SubTitle from '@components/SubTitle'
 
 function Dashboard() {
   return (

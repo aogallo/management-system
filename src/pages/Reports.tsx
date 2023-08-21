@@ -1,5 +1,5 @@
-import Content from '../components/Content'
-import TitleContent from '../components/TitleContent'
+import Content from '@components/Content'
+import TitleContent from '@components/TitleContent'
 
 function Reports() {
   const addProduct = () => {
