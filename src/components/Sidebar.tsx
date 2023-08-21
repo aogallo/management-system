@@ -1,6 +1,8 @@
+import useAuth from '@hooks/useAuth'
 import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
+  const { logOut } = useAuth()
   return (
     <aside className='sidebar'>
       <Link to='/dashboard'>
@@ -56,7 +58,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link className='menu-item' to='/'>
+          <Link className='menu-item' to='/login' onClick={logOut}>
             <span className='material-symbols-outlined'>logout</span>
             <span>Salir</span>
           </Link>

@@ -1,17 +1,26 @@
+import { useEffect, useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useMutation } from '@tanstack/react-query'
+
+import useAuth from '@hooks/useAuth'
 import { useFormInput } from '@hooks/useFormInput'
 import { logIn } from '@services/login'
+
 import { UserLoggedType } from '@src/types'
-import { useMutation } from '@tanstack/react-query'
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
+  const { addAuth } = useAuth()
+  const userRef = useRef()
   const username = useFormInput('')
   const password = useFormInput('')
   const navigate = useNavigate()
   const [message, setMessage] = useState('')
   const [error, setError] = useState(false)
   const { mutateAsync } = useMutation(logIn)
+
+  useEffect(() => {
+    userRef.current.focus()
+  }, [])
 
   const handleLogin = async (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -42,10 +51,13 @@ function Login() {
         setMessage('Logueado')
         const login = data.data as UserLoggedType
         window.localStorage.setItem('user', login.token)
+        addAuth({ user: login, isLogged: true })
         navigate('/dashboard')
       }
     } catch (error) {
       console.log(error)
+      setError(true)
+      setMessage('Error al aunteticarse, comuniquese con el administrador.')
     }
   }
 
@@ -58,6 +70,7 @@ function Login() {
         <label className='form-label'>Usuario*</label>
         <input
           className='form-input'
+          ref={userRef}
           type='text'
           name='user'
           id='user'

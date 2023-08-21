@@ -57,3 +57,15 @@ export interface UserLoggedType {
   username: string
   name: string
 }
+
+// CONTEXT
+type AppContextType = {
+  user: UserLoggedType
+  isLogged: boolean
+}
+type GlobalContextType = {
+  user: UserLoggedType
+  isLogged: boolean
+  addAuth: (user: AppContextType) => void
+  logOut: () => void
+}
